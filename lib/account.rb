@@ -1,19 +1,19 @@
+# Responsible for looking after the records of actions on account
 class Account
 
-  MINIMUM_BALANCE = 0
 
-  attr_reader :balance
+  attr_reader :deposits, :withdrawals
 
-  def initialize(balance = MINIMUM_BALANCE)
-    @balance = 0
+  def initialize
+    @deposits = []
+    @withdrawals = []
   end
 
   def deposit(money)
-    money += balance
+    deposits << money
   end
 
   def withdraw(money)
-    money -= balance
+    withdrawals << money
   end
-
 end
