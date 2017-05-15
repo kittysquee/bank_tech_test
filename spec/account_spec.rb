@@ -47,21 +47,13 @@ describe Account do
       subject.withdraw(100)
       expect(subject.withdrawals).to eq [{date: "15/05/2017", withdrawal: 100}]
     end
+
+    describe '#account_overview' do
+      it 'allows a customer to see an overview of their account' do
+        subject.deposit(100)
+        subject.withdraw(25)
+        expect(subject.account_overview).to eq [{date: "15/05/2017", deposit: 100},{date: "15/05/2017", withdrawal: 25}]
+      end
+    end
   end
-  #
-  # describe '#total_deposited' do
-  #   it 'will return total deposited' do
-  #     subject.deposit(15)
-  #     subject.deposit(15)
-  #     expect(subject.total_deposited).to eq 30
-  #   end
-  # end
-  #
-  # describe '#total_withdrawn' do
-  #   it 'will return total withdrawn' do
-  #     subject.withdraw(15)
-  #     subject.withdraw(15)
-  #     expect(subject.total_withdrawn).to eq 30
-  #   end
-  # end
 end

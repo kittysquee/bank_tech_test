@@ -17,11 +17,7 @@ class Account
     withdrawals << {date: Time.now.strftime("%d/%m/%Y"), withdrawal: money}
   end
 
-  # def total_deposited
-  #   deposits.inject(:+)
-  # end
-  #
-  # def total_withdrawn
-  #   withdrawals.inject(:+)
-  # end
+  def account_overview
+    deposits + withdrawals
+  end
 end
