@@ -1,11 +1,17 @@
 require 'account'
 require 'timecop'
+require 'time'
 
 describe Account do
 
+  let(:date) {double :date}
+
   describe '#deposit' do
+    before do
+      Timecop.freeze(Time.new(2017, 05, 15, 13, 0 ,0))
+    end
     it 'allows record of deposit' do
-      expect(subject.deposit(25)).to eq [25]
+      expect(subject.deposit({date: Time.now.strftime("%d/%m/%Y"), deposit: 25})).to eq [{date: Time.now.strftime("%d/%m/%Y"), deposit: 25}]
     end
 
     it 'allows multiple deposits' do
@@ -13,8 +19,14 @@ describe Account do
       expect(subject.deposit(25)).to eq [25, 25]
     end
 
+
     it 'has an empty deposit history' do
       expect(subject.deposits).to eq []
+    end
+
+    it 'allows a date to be passed with deposit' do
+      subject.deposit({date: Time.now.strftime("%d/%m/%Y"), deposit: 100})
+      expect(subject.deposits).to eq [{date: "15/05/2017", deposit: 100}]
     end
   end
 

@@ -1,5 +1,6 @@
 # Responsible for looking after the records of actions on account
 class Account
+  require 'time'
 
   attr_reader :deposits, :withdrawals
 
@@ -8,8 +9,8 @@ class Account
     @withdrawals = []
   end
 
-  def deposit(money)
-    deposits << money
+  def deposit(date, money)
+    deposits << {date: date = Time.now.strftime("%d/%m/%Y"), deposit: money}
   end
 
   def withdraw(money)
