@@ -9,19 +9,19 @@ class Account
     @withdrawals = []
   end
 
-  def deposit(date, money)
-    deposits << {date: date = Time.now.strftime("%d/%m/%Y"), deposit: money}
+  def deposit(money)
+    deposits << {date: Time.now.strftime("%d/%m/%Y"), deposit: money}
   end
 
   def withdraw(money)
     withdrawals << money
   end
 
-  def total_deposited
-    deposits.inject(:+)
-  end
-
-  def total_withdrawn
-    withdrawals.inject(:+)
-  end
+  # def total_deposited
+  #   deposits.inject(:+)
+  # end
+  #
+  # def total_withdrawn
+  #   withdrawals.inject(:+)
+  # end
 end
