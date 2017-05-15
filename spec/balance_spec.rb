@@ -19,6 +19,11 @@ describe Balance do
       expect{ subject.withdraw(25) }.to change{ subject.balance }.by -25
       expect(subject.balance).to eq 75
     end
+
+    it 'raises error if customer tries to overdraw' do
+      message = 'Insufficient funds'
+      expect{ subject.withdraw(1) }.to raise_error message
+    end
   end
 
 end

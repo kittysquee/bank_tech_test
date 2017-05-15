@@ -2,4 +2,8 @@ source 'https://rubygems.org'
 
 ruby '2.4.0'
 
-gem 'rspec'
+
+group :test do
+  gem 'rspec'
+  gem 'timecop'
+end

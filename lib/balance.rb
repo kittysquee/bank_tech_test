@@ -14,6 +14,7 @@ class Balance
   end
 
   def withdraw(money)
+    fail 'Insufficient funds' if balance < MINIMUM_BALANCE
     self.balance -= money
   end
 
