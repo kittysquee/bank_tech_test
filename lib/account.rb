@@ -14,7 +14,7 @@ class Account
   end
 
   def withdraw(money)
-    withdrawals << money
+    withdrawals << {date: Time.now.strftime("%d/%m/%Y"), withdrawal: money}
   end
 
   # def total_deposited

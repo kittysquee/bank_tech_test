@@ -30,19 +30,25 @@ describe Account do
 
   describe '#withdraw' do
     it 'allows record of withdrawal' do
-      expect(subject.withdraw(25)).to eq [25]
+      expect(subject.withdraw(25)).to eq [{date: "15/05/2017", withdrawal: 25}]
     end
 
     it 'allows multiple withdrawals' do
       subject.withdraw(25)
-      expect(subject.withdraw(25)).to eq [25, 25]
+      expect(subject.withdraw(25)).to eq [{date: "15/05/2017", withdrawal: 25}, {date: "15/05/2017", withdrawal: 25}]
     end
 
     it 'has an empty withdrawal history' do
       expect(subject.withdrawals).to eq []
     end
+
+
+    it 'allows a date to be passed with deposit' do
+      subject.withdraw(100)
+      expect(subject.withdrawals).to eq [{date: "15/05/2017", withdrawal: 100}]
+    end
   end
-  # 
+  #
   # describe '#total_deposited' do
   #   it 'will return total deposited' do
   #     subject.deposit(15)
