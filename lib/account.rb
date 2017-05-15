@@ -1,6 +1,7 @@
 # Responsible for looking after the records of actions on account
 class Account
   require 'time'
+  require 'pp'
 
   attr_reader :deposits, :withdrawals
 
@@ -18,6 +19,6 @@ class Account
   end
 
   def account_overview
-    deposits + withdrawals
+    account_hash = deposits + withdrawals
   end
 end
